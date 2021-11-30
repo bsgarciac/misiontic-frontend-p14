@@ -2,14 +2,33 @@
  <div id="app">
    <div class="header shadow ">
      <h2>Banco MisiónTIC</h2>
+      <div>
+        <button>Ingresar</button>
+        <button>Registro</button>
+      </div>
+    </div>
     <div>
-      <button>Ingresar</button>
-      <button>Registro</button>
+      <router-view></router-view>
     </div>
-    </div>
-   </div>
+  </div>
    
 </template>
+
+
+<script> 
+  export default{
+        name: "App", // NOmbre del componente
+        data: function () {}, // Variables que se usan
+        methods: {
+          loadLogIn(){
+            this.$router.push({name: "logIn"});
+          }
+        }, // Métodos que estoy usando
+        created: function () {
+          this.loadLogIn();
+        } // Eventos: Qué pasa cuando se inicia el componente
+    }
+</script>
 
 <style>
   .header{
