@@ -1,30 +1,38 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+ <div id="app">
+   <div class="header shadow ">
+     <h2>Banco MisiónTIC</h2>
+    <div>
+      <button>Ingresar</button>
+      <button>Registro</button>
+    </div>
+    </div>
+   </div>
+   
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+  .header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #04043c;
+    color: white;
+    padding: 10px 50px;
+  }
 
-#nav {
-  padding: 30px;
-}
+  .header h2{
+    font-family: sans-serif;
+    margin: 0;
+  }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+  .header button{
+    background: transparent;
+    color: white;
+    border: none;
+  }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+  body{
+    margin: 0;
+  }
 </style>
