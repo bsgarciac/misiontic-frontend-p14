@@ -3,9 +3,10 @@
     <div class="background"></div>
     <div class="form shadow-lg">
       <h3>Iniciar sesión</h3>
-      <form>
+      <form v-on:submit.prevent="processLogIn">
         <input v-model="credentials.username" class="form-control" placeholder="Usuario" />
         <input v-model="credentials.password" type="password" class="form-control" placeholder="Contraseña" />
+        <p v-if="show_error" class="error">Usuario o contraseña incorrecta</p>
         <button class="btn btn-primary">Ingresar</button>
       </form>
     </div>
@@ -13,17 +14,48 @@
 </template>
 
 <script>
+import gql from "graphql-tag";
+
 export default {
   name: "LogIn", 
   data: function () {
     return {
+      show_error: false,
       credentials: {
         username: "",
         password: ""
       }
     }
   }, // Variables
-  methods: {}, 
+  methods: {
+    processLogIn: async function () {
+      console.log("Entra")
+      await this.$apollo.mutate({
+        mutation: gql`
+          mutation LogIn($credentials: LoginInput!) {
+            logIn(credentials: $credentials) {
+              key
+            }
+          }
+        `,
+        variables: {
+          credentials: this.credentials
+        }
+      })
+      .then((result) => {
+        console.log(result)
+        let dataLogin = {
+          username: this.credentials.username,
+          token: result.data.logIn.key
+        }
+        this.$emit("completedLogin", dataLogin);
+      })
+      .catch((error) => {
+        console.log(error)
+        this.show_error = true;
+      })
+    }
+  }, // Funciones que uso en el componente
   created: function () {},
 };
 </script>
@@ -56,6 +88,11 @@ export default {
 .form h3{
     text-align: center;
     margin-bottom: 30px;
+}
+
+.error{
+  color: red;
+  font-size: 15px;
 }
 
 @media (max-width: 500px){
