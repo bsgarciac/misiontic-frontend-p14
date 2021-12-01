@@ -4,8 +4,8 @@
     <div class="form shadow-lg">
       <h3>Iniciar sesión</h3>
       <form>
-        <input class="form-control" placeholder="Usuario" />
-        <input type="password" class="form-control" placeholder="Password" />
+        <input v-model="credentials.username" class="form-control" placeholder="Usuario" />
+        <input v-model="credentials.password" type="password" class="form-control" placeholder="Contraseña" />
         <button class="btn btn-primary">Ingresar</button>
       </form>
     </div>
@@ -14,10 +14,17 @@
 
 <script>
 export default {
-  name: "LogIn", // NOmbre del componente
-  data: function () {}, // Variables que se usan
-  methods: {}, // Métodos que estoy usando
-  created: function () {}, // Eventos: Qué pasa cuando se inicia el componente
+  name: "LogIn", 
+  data: function () {
+    return {
+      credentials: {
+        username: "",
+        password: ""
+      }
+    }
+  }, // Variables
+  methods: {}, 
+  created: function () {},
 };
 </script>
     
@@ -49,5 +56,12 @@ export default {
 .form h3{
     text-align: center;
     margin-bottom: 30px;
+}
+
+@media (max-width: 500px){
+  .form{
+    padding: 40px 25px;
+    width: 85%;
+  }
 }
 </style>

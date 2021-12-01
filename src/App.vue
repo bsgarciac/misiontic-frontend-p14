@@ -2,10 +2,13 @@
  <div id="app">
    <div class="header shadow ">
      <h2>Banco MisiónTIC</h2>
-      <div>
-        <button>Ingresar</button>
-        <button>Registro</button>
+      <div class="buttons">
+        <button v-on:click="loadLogIn">Ingresar</button>
+        <button v-on:click="loadSignUp">Registro</button>
       </div>
+      <div class="buttons-mb">
+        <img src="./assets/menu.png">
+        </div>
     </div>
     <div>
       <router-view></router-view>
@@ -28,7 +31,7 @@
           }
         }, // Métodos que estoy usando
         created: function () {
-          this.loadSignUp();
+          this.loadLogIn();
         } // Eventos: Qué pasa cuando se inicia el componente
     }
 </script>
@@ -56,5 +59,24 @@
 
   body{
     margin: 0;
+  }
+
+  .buttons-mb{
+    display: none;
+  }
+
+  .buttons-mb img{
+      width: 25px;
+  }
+  @media (max-width: 440px){
+    .buttons{
+      display: none;
+    }
+    .header{
+      padding: 10px 20px;
+    }
+    .buttons-mb{
+       display: block;
+    }
   }
 </style>
