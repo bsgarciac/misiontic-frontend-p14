@@ -22,10 +22,13 @@
         methods: {
           loadLogIn(){
             this.$router.push({name: "logIn"});
+          },
+          loadSignUp(){
+            this.$router.push({name: "signUp"});
           }
         }, // Métodos que estoy usando
         created: function () {
-          this.loadLogIn();
+          this.loadSignUp();
         } // Eventos: Qué pasa cuando se inicia el componente
     }
 </script>
