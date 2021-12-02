@@ -30,7 +30,7 @@ export default {
     verifyAuth(){ 
       this.is_auth = localStorage.getItem("is_auth") || false;
       if(this.is_auth){
-        console.log("ir a la página de inicio")
+        this.loadTransactions();
       }else{
         this.loadLogIn()
       }
@@ -40,6 +40,9 @@ export default {
     },
     loadSignUp() {
       this.$router.push({ name: "signUp" });
+    },
+    loadTransactions(){
+      this.$router.push({ name: "transactions"})
     },
     completedLogin(data) {
       this.is_auth = true;

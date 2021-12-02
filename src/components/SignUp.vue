@@ -63,32 +63,4 @@ export default {
 </script>
     
 <style>
-#signup .background {
-  background-image: url("https://images.pexels.com/photos/351264/pexels-photo-351264.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
-  height: calc(100vh - 57px);
-}
-
-#signup .form {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  background-color: white;
-  transform: translate(-50%, -50%);
-  border-radius: 10px;
-  padding: 80px 50px;
-}
-
-#signup .form form {
-  display: flex;
-  flex-direction: column;
-}
-
-#signup .form input {
-  margin-bottom: 15px;
-}
-
-#signup .form h3{
-    text-align: center;
-    margin-bottom: 30px;
-}
 </style>

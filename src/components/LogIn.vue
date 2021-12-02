@@ -7,7 +7,9 @@
         <input v-model="credentials.username" class="form-control" placeholder="Usuario" />
         <input v-model="credentials.password" type="password" class="form-control" placeholder="Contraseña" />
         <p v-if="show_error" class="error">Usuario o contraseña incorrecta</p>
-        <button class="btn btn-primary">Ingresar</button>
+        <button class="btn btn-primary">
+          <span v-if="!is_loading">Ingresar</span>
+          <div v-if="is_loading" class="spinner-border text-light" role="status"></div></button>
       </form>
     </div>
   </div>
@@ -20,6 +22,7 @@ export default {
   name: "LogIn", 
   data: function () {
     return {
+      is_loading: false,
       show_error: false,
       credentials: {
         username: "",
@@ -29,6 +32,7 @@ export default {
   }, // Variables
   methods: {
     processLogIn: async function () {
+      this.is_loading = true;
       console.log("Entra")
       await this.$apollo.mutate({
         mutation: gql`
@@ -48,10 +52,12 @@ export default {
           username: this.credentials.username,
           token: result.data.logIn.key
         }
+        this.is_loading = false;
         this.$emit("completedLogin", dataLogin);
       })
       .catch((error) => {
         console.log(error)
+        this.is_loading = false;
         this.show_error = true;
       })
     }
