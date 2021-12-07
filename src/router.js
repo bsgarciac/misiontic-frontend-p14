@@ -13,17 +13,20 @@ const routes = [
   {
     path: '/user/login',
     name: 'logIn',
-    component: LogIn
+    component: LogIn,
+    meta: { requiresAuth: false, onlyNotAuth: true}
   },
   {
     path: '/user/signup',
     name: 'signUp',
-    component: SignUp
+    component: SignUp,
+    meta: {requiresAuth: false, onlyNotAuth: true}
   },
   {
     path: '/user/transactions',
     name: 'transactions',
-    component: Transactions
+    component: Transactions,
+    meta: { requiresAuth: true, onlyNotAuth: false}
   }
 ]
 
@@ -31,5 +34,7 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes
 })
+
+
 
 export default router

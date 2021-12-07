@@ -35,7 +35,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="transaction in transactionByUsername" :key="transaction.id">
+        <tr v-for="transaction in transactionByUsername " :key="transaction.id">
           <td>{{ transaction.usernameOrigin }}</td>
           <td>{{ transaction.usernameDestiny }}</td>
           <td>
